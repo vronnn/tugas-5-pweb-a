@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Burungkuy</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lato", sans-serif;
+      }
+      .header {
+        width: 100%;
+        min-height: 2.5rem;
+        background-color: #67682e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .header div {
+        color: whitesmoke;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .nav-container {
+        padding: 0 1.5rem;
+        background-color: #f8f9fa;
+      }
+      .hero {
+        height: calc(100vh - 88px);
+        background-image: url("/img/heroimg.avif");
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: whitesmoke;
+        row-gap: 0.5rem;
+      }
+      .hero-content h1 {
+        font-weight: 900;
+        letter-spacing: 1px;
+        font-size: 3.1rem;
+      }
+      .hero-content p {
+        font-size: 1.05rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .shop-btn-cont {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        min-height: 7.5rem;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        column-gap: 1.5rem;
+      }
+      .shop-btn-cont a {
+        text-decoration: none;
+        color: #212a2e;
+        background-color: whitesmoke;
+        width: 11rem;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        padding: 0.8rem;
+        letter-spacing: 1.5px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: all 150ms;
+      }
+      .shop-btn-cont a:hover {
+        color: whitesmoke;
+        background-color: #212a2e;
+      }
+      .brand {
+        font-family: "Fugaz One", cursive;
+        color: #212a2e;
+      }
+      .navbar-nav a {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .starter {
+        width: 100%;
+        min-height: 3rem;
+        background-color: #212a2e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: whitesmoke;
+      }
+      .favorites {
+        display: flex;
+        min-height: 5.2rem;
+        justify-content: center;
+        align-items: end;
+      }
+      .favorites h2 {
+        font-weight: 900;
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+      .category {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .category p {
+        width: 10rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .category-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 5.5rem;
+        margin-bottom: 1rem;
+      }
+      .card-img {
+        overflow: hidden;
+      }
+      .card img {
+        position: relative;
+        transition: all 300ms;
+      }
+      .card-img a {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 50%;
+        transform: translateX(-50%);
+        text-decoration: none;
+        color: #212a2e;
+        background-color: whitesmoke;
+        width: 11rem;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        padding: 0.8rem;
+        letter-spacing: 1.5px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: all 150ms;
+      }
+      .card-img:hover img {
+        transform: scale(1.1);
+        filter: brightness(0.5);
+      }
+      .card-img:hover a {
+        opacity: 1;
+      }
+      .card-img a:hover {
+        color: whitesmoke;
+        background-color: #212a2e;
+      }
+      .page-2 {
+        min-height: 100vh;
+      }
+      .catalog {
+        min-height: 100vh;
+      }
+      .catalog-img {
+        height: 70vh;
+        overflow: hidden;
+        object-position: center;
+        background-image: url("/img/catalog.avif");
+        background-size: cover;
+        background-position: center;
+      }
+      .tagline {
+        min-height: 33vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 0.7rem;
+        letter-spacing: 1px;
+      }
+      .tagline h2 {
+        font-size: 2rem;
+        font-weight: 900;
+      }
+      .catalog-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1.5rem;
+      }
+      .tagline a {
+        text-decoration: none;
+        color: whitesmoke;
+        background-color: #212a2e;
+        width: 11rem;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        padding: 0.8rem;
+        letter-spacing: 1.5px;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+      }
+      footer {
+        position: relative;
+        height: fit-content;
+        padding-top: 3rem;
+        background-color: #212a2e;
+        color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 3rem;
+      }
+      .social {
+        display: flex;
+        column-gap: 0.5rem;
+      }
+      .table-footer-1 {
+        display: flex;
+        column-gap: 5rem;
+      }
+      .first-col-1 {
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 0.5rem;
+      }
+      .first-table {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+      }
+      .first-col-1 h4 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .first-table a {
+        text-decoration: none;
+        color: whitesmoke;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        font-weight: 400;
+      }
+      .first-col-2 h4 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      .first-col-2 p {
+        font-size: 0.8rem;
+        max-width: 20rem;
+      }
+      .copyright {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 4rem;
+      }
+      .copyright p {
+        font-size: 0.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        Get Sweaty, Feel Good With Up to 40% Off Select Styles. Shop Men | Shop
+        Women *Details
+      </div>
+    </div>
+    <div class="nav-container sticky-top">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav satu">
+              <a class="nav-link active" aria-current="page" href="#">men</a>
+              <a class="nav-link active" href="#">women</a>
+              <a class="nav-link active" href="#">kids</a>
+              <a class="nav-link active" href="">new arrivals</a>
+              <a class="nav-link active" href="" style="color: maroon">sales</a>
+            </div>
+            <a class="navbar-brand m-auto brand" href="#">Burungkuy</a>
+            <div class="navbar-nav">
+              <a class="nav-link active active" aria-current="page" href="#"
+                >sustainability</a
+              >
+              <a class="nav-link active" href="#">rerun</a>
+              <a class="nav-link active" href="#">stores</a>
+              <a class="nav-link active mx-2"
+                ><i class="fa-solid fa-cart-shopping fa-xl"></i
+              ></a>
+              <a class="nav-link active"
+                ><i class="fa-solid fa-user fa-xl"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Up to 40% off Select Styles</h1>
+        <p>
+          Workout smarter, not harder with deals on performance styles in-store
+          & online
+        </p>
+      </div>
+      <div class="shop-btn-cont">
+        <a href="">shop men</a>
+        <a href="">shop women</a>
+      </div>
+    </div>
+    <div class="starter">
+      <div>
+        <span style="font-weight: 700">Discover Your Perfect Pair</span> Try our
+        Style Quiz to find the best pair for you.
+        <span style="text-decoration: underline">Take the Style Quiz</span>
+      </div>
+    </div>
+    <section class="page-2">
+      <div class="container">
+        <div class="favorites">
+          <h2>Our Favorites</h2>
+        </div>
+        <div class="category-cont">
+          <div class="category">
+            <p>for everyday</p>
+            <p>for running</p>
+            <p>for travel</p>
+          </div>
+          <div class="border"></div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-img">
+                <img
+                  src="/img/category1.avif"
+                  class="card-img-top"
+                  alt="category 1"
+                />
+                <a href="">shop now</a>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-img">
+                <img
+                  src="/img/category2.avif"
+                  class="card-img-top"
+                  alt="category 1"
+                />
+                <a href="">shop now</a>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card">
+              <div class="card-img">
+                <img
+                  src="/img/category3.avif"
+                  class="card-img-top"
+                  alt="category 1"
+                />
+                <a href="">shop now</a>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="catalog-img"></div>
+    <div class="tagline">
+      <h2>Lighten Up</h2>
+      <p>Our Tree material is a breath of fresh air, for your feet.</p>
+      <div class="catalog-btn">
+        <a href="" class="nav-fill">shop men</a>
+        <a href="" class="nav-fill">shop women</a>
+      </div>
+    </div>
+    <footer>
+      <div class="table-footer-1 container">
+        <div class="first-col-1">
+          <h4>help</h4>
+          <div class="first-table">
+            <a href="">1-888-963-8944</a>
+            <a href="">1-814-251-9966 (Text)</a>
+            <a href="">help@burungkuy.com</a>
+            <a href="">Returns/Exchanges</a>
+            <a href="">FAQ/Contact Us</a>
+            <a href="">Afterpay</a>
+          </div>
+        </div>
+        <div class="first-col-1">
+          <h4>SHOP</h4>
+          <div class="first-table">
+            <a href="">Men's Shoes</a>
+            <a href="">Women's Shoes</a>
+            <a href="">Men's Apparel</a>
+            <a href="">Women's Apparel</a>
+            <a href="">Socks</a>
+            <a href="">Gift Cards</a>
+            <a href="">Refer a Friend</a>
+            <a href="">Download the Burungkuy</a>
+          </div>
+        </div>
+        <div class="first-col-1">
+          <h4>company</h4>
+          <div class="first-table">
+            <a href="">Our Stores</a>
+            <a href="">Our Story</a>
+            <a href="">Our Materials</a>
+            <a href="">RSustainability</a>
+            <a href="">Investors</a>
+            <a href="">Shoe Care</a>
+            <a href="">Partnerships</a>
+            <a href="">Product Testing</a>
+            <a href="">Affiliates</a>
+            <a href="">Bulk Orders</a>
+            <a href="">Careers</a>
+            <a href="">Press</a>
+            <a href="">California Transparency Act</a>
+            <a href="">Community Offers</a>
+          </div>
+        </div>
+      </div>
+      <div class="table-footer-2 container">
+        <div class="first-col-2">
+          <h4>follow the flock</h4>
+          <p>
+            Exclusive offers, a heads up on new things, and sightings of
+            Burungkuy in the wild. Oh, we have cute sheep, too. #weareaburungkuy
+          </p>
+          <div class="social">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          © 2022 Burungkuy, Inc. All Rights Reserved. Terms, Privacy &
+          Accessibility
+        </p>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
